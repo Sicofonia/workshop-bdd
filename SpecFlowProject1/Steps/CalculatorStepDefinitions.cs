@@ -70,5 +70,32 @@ namespace SpecFlowProject1.Steps
             Assert.True(isSetup);
         }
 
+        [Given(@"that the quantity is (.*)")]
+        public void GivenThatTheQuantityIs(int p0)
+        {
+            OrderCalculator.Quantity = p0;
+        }
+
+        [Given(@"the price is (.*)")]
+        public void GivenThePriceIs(float p0)
+        {
+            OrderCalculator.Price = p0;
+            //ScenarioContext.Current.Pending();
+        }
+
+        private float orderTotal = 0;
+        [When(@"the i calculate the order total")]
+        public void WhenTheICalculateTheOrderTotal()
+        {
+            orderTotal = OrderCalculator.CalculateOrderTotal();
+        }
+
+        [Then(@"the result should be (.*)")]
+        public void ThenTheResultShouldBe(float p0)
+        {
+            Assert.Equal(p0, orderTotal);
+        }
+
+
     }
 }
