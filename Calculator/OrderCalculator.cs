@@ -19,5 +19,7 @@ namespace Calculator
         {
             return Quantity * Price;
         }
+
+
     }
 }
