@@ -1,4 +1,6 @@
-﻿using TechTalk.SpecFlow;
+﻿using Calculator;
+using TechTalk.SpecFlow;
+using Xunit;
 
 namespace SpecFlowProject1.Steps
 {
@@ -15,44 +17,58 @@ namespace SpecFlowProject1.Steps
             _scenarioContext = scenarioContext;
         }
 
-        [Given("the first number is (.*)")]
-        public void GivenTheFirstNumberIs(int number)
-        {
-            //TODO: implement arrange (precondition) logic
-            // For storing and retrieving scenario-specific data see https://go.specflow.org/doc-sharingdata
-            // To use the multiline text or the table argument of the scenario,
-            // additional string/Table parameters can be defined on the step definition
-            // method. 
+        //[Given("the first number is (.*)")]
+        //public void GivenTheFirstNumberIs(int number)
+        //{
+        //    //TODO: implement arrange (precondition) logic
+        //    // For storing and retrieving scenario-specific data see https://go.specflow.org/doc-sharingdata
+        //    // To use the multiline text or the table argument of the scenario,
+        //    // additional string/Table parameters can be defined on the step definition
+        //    // method. 
 
-            _scenarioContext.Pending();
+        //    _scenarioContext.Pending();
+        //}
+
+        //[Given("the second number is (.*)")]
+        //public void GivenTheSecondNumberIs(int number)
+        //{
+        //    //TODO: implement arrange (precondition) logic
+        //    // For storing and retrieving scenario-specific data see https://go.specflow.org/doc-sharingdata
+        //    // To use the multiline text or the table argument of the scenario,
+        //    // additional string/Table parameters can be defined on the step definition
+        //    // method. 
+
+        //    _scenarioContext.Pending();
+        //}
+
+        //[When("the two numbers are added")]
+        //public void WhenTheTwoNumbersAreAdded()
+        //{
+        //    //TODO: implement act (action) logic
+
+        //    _scenarioContext.Pending();
+        //}
+
+        //[Then("the result should be (.*)")]
+        //public void ThenTheResultShouldBe(int result)
+        //{
+        //    //TODO: implement assert (verification) logic
+
+        //    _scenarioContext.Pending();
+        //}
+        private bool isSetup = false;
+        [Given(@"the project is setup")]
+        public void GivenTheProjectIsSetup()
+        {
+            isSetup = Calculator.OrderCalculator.ProjectSetup();
+            //_scenarioContext.Pending();
         }
 
-        [Given("the second number is (.*)")]
-        public void GivenTheSecondNumberIs(int number)
+        [Then(@"the test is passing")]
+        public void ThenTheTestIsPassing()
         {
-            //TODO: implement arrange (precondition) logic
-            // For storing and retrieving scenario-specific data see https://go.specflow.org/doc-sharingdata
-            // To use the multiline text or the table argument of the scenario,
-            // additional string/Table parameters can be defined on the step definition
-            // method. 
-
-            _scenarioContext.Pending();
+            Assert.True(isSetup);
         }
 
-        [When("the two numbers are added")]
-        public void WhenTheTwoNumbersAreAdded()
-        {
-            //TODO: implement act (action) logic
-
-            _scenarioContext.Pending();
-        }
-
-        [Then("the result should be (.*)")]
-        public void ThenTheResultShouldBe(int result)
-        {
-            //TODO: implement assert (verification) logic
-
-            _scenarioContext.Pending();
-        }
     }
 }
