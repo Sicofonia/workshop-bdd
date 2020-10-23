@@ -10,8 +10,8 @@ namespace Calculator
     {
         public static int Quantity { get; set; }
         public static float Price { get; set; }
+        public static string CountryCode { get; set; }
 
-        
 
         public static bool ProjectSetup() => true;
 
@@ -20,6 +20,15 @@ namespace Calculator
             return Quantity * Price;
         }
 
-
+        public static double CalculateOrderTotalBasedOnCountryTaxRate(float ammount)
+        {
+            switch (CountryCode)
+            {
+                case "DE":
+                    return ammount + (ammount * 0.0625);
+                default:
+                    return ammount;
+            }
+        }
     }
 }

@@ -19,6 +19,9 @@ namespace SpecFlowProject1.Steps
 
         
         private bool isSetup = false;
+        private float orderTotal = 0;
+
+
         [Given(@"the project is setup")]
         public void GivenTheProjectIsSetup()
         {
@@ -45,7 +48,7 @@ namespace SpecFlowProject1.Steps
             //ScenarioContext.Current.Pending();
         }
 
-        private float orderTotal = 0;
+        
         [When(@"the i calculate the order total")]
         public void WhenTheICalculateTheOrderTotal()
         {
@@ -61,7 +64,8 @@ namespace SpecFlowProject1.Steps
         [Given(@"the country code is (.*)")]
         public void GivenTheCountryCodeIs(string p0)
         {
-            _scenarioContext.Pending();
+            orderTotal = OrderCalculator.CalculateOrderTotal();
+            OrderCalculator.CalculateOrderTotalBasedOnCountryTaxRate(orderTotal);
         }
 
 
